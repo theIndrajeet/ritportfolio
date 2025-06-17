@@ -1,0 +1,18 @@
+# Ignore everything
+*
+
+# But not the ritportfolio directory
+!/ritportfolio/
+
+# Keep empty directories
+!.gitkeep
+
+# Common files to ignore
+.DS_Store
+node_modules/
+.env
+*.log
+
+# Unignore the files in the root directory
+!/*
+!/.gitignore

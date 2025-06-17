@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ritika Raj | Legal Professional</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg-main: #111111;
+            --bg-secondary: #1D1D1D;
+            --text-main: #EAEAEA;
+            --text-muted: #A0A0A0;
+            --accent: #C9B494; /* Elegant Champagne Gold */
+            --accent-hover: #E1D0B4;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .hero-bg {
+            background-color: var(--bg-main);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse 80% 80% at 50% -20%, rgba(255, 255, 255, 0.05), transparent);
+            pointer-events: none; /* This allows clicks to pass through to elements below */
+        }
+        
+        .hero-bg > .container {
+            position: relative; /* Create a new stacking context */
+            z-index: 1; /* Ensure content is above the pseudo-element */
+        }
+
+        .text-accent {
+            color: var(--accent);
+        }
+
+        .border-accent {
+            border-color: var(--accent);
+        }
+
+        .bg-accent {
+             background-color: var(--accent);
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: var(--bg-main);
+            font-weight: 700;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            transform: scale(1.05);
+        }
+
+        .btn-secondary {
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            font-weight: 700;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            transition: background-color 0.3s, color 0.3s, transform 0.3s;
+        }
+        .btn-secondary:hover {
+            background-color: var(--accent);
+            color: var(--bg-main);
+            transform: scale(1.05);
+        }
+
+        .glass-header {
+            background: rgba(17, 17, 17, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-secondary); }
+        ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 4px; }
+
+        .loader {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: var(--bg-main);
+            display: flex; justify-content: center; align-items: center;
+            z-index: 10000;
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+        .loader-circle {
+            width: 50px; height: 50px;
+            border: 3px solid rgba(201, 180, 148, 0.2);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        
+        .ai-loader {
+            position: absolute;
+            top:0; left:0; right:0; bottom:0;
+            background: rgba(29, 29, 29, 0.8);
+            display: flex; justify-content: center; align-items: center;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="loader" id="loader">
+        <div class="loader-circle"></div>
+    </div>
+
+    <header class="fixed top-0 left-0 right-0 z-50 glass-header">
+        <div class="container mx-auto px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0">
+                    <a href="#home" class="text-3xl font-bold text-accent">RR</a>
+                </div>
+                <nav class="hidden md:block">
+                    <div class="flex items-baseline space-x-10">
+                        <a href="#about" class="nav-link text-lg text-muted hover:text-main transition-colors duration-300">About</a>
+                        <a href="#experience" class="nav-link text-lg text-muted hover:text-main transition-colors duration-300">Experience</a>
+                        <a href="#skills" class="nav-link text-lg text-muted hover:text-main transition-colors duration-300">Skills</a>
+                        <a href="#career-corner" class="nav-link text-lg text-muted hover:text-main transition-colors duration-300">AI Corner</a>
+                        <a href="#achievements" class="nav-link text-lg text-muted hover:text-main transition-colors duration-300">Awards</a>
+                        <a href="#contact" class="nav-link text-lg text-muted hover:text-main transition-colors duration-300">Contact</a>
+                    </div>
+                </nav>
+                <div class="md:hidden">
+                    <button id="menu-button" class="p-2 rounded-lg hover:bg-white/10 transition-colors">
+                        <i data-feather="menu" class="h-6 w-6 text-main"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="md:hidden hidden glass-header border-t border-white/10">
+            <div class="px-4 pt-2 pb-4 space-y-2">
+                <a href="#about" class="block px-3 py-2 rounded-md text-lg font-medium text-muted hover:text-main hover:bg-white/5">About</a>
+                <a href="#experience" class="block px-3 py-2 rounded-md text-lg font-medium text-muted hover:text-main hover:bg-white/5">Experience</a>
+                <a href="#skills" class="block px-3 py-2 rounded-md text-lg font-medium text-muted hover:text-main hover:bg-white/5">Skills</a>
+                <a href="#career-corner" class="block px-3 py-2 rounded-md text-lg font-medium text-muted hover:text-main hover:bg-white/5">AI Corner</a>
+                <a href="#achievements" class="block px-3 py-2 rounded-md text-lg font-medium text-muted hover:text-main hover:bg-white/5">Awards</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-lg font-medium text-muted hover:text-main hover:bg-white/5">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="min-h-screen flex items-center hero-bg">
+            <div class="container mx-auto px-6 lg:px-8 text-center">
+                <h1 class="text-6xl md:text-8xl lg:text-9xl font-bold text-main mb-4" data-aos="fade-down">
+                    Ritika Raj
+                </h1>
+                <p class="text-xl md:text-2xl text-muted mb-4" data-aos="fade-up" data-aos-delay="200">
+                    Advocate for Justice & Fairness
+                </p>
+                <p class="text-lg md:text-xl text-muted/70 mb-10" data-aos="fade-up" data-aos-delay="300">
+                    Third-Year BBA LLB (Hons.) Student specializing in legal research and advocacy.
+                </p>
+                <div data-aos="fade-up" data-aos-delay="400" class="relative z-10">
+                    <a href="#contact" class="btn-primary inline-block">Get In Touch</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="py-24 md:py-32 bg-bg-secondary">
+            <div class="container mx-auto px-6 lg:px-8">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-4xl md:text-5xl font-semibold mb-6 text-accent" data-aos="fade-up">
+                        "To be, or not to be: that is the question."
+                    </h2>
+                    <div class="text-lg md:text-xl text-text-muted leading-relaxed space-y-6" data-aos="fade-up" data-aos-delay="200">
+                        <p>
+                            Law isn't just a career for me—it's a commitment to fairness, problem-solving, and occasionally sparring with complex clauses. With a solid academic foundation and hands-on internship experience, I tackle legal challenges with curiosity and strategy.
+                        </p>
+                        <p>
+                           Driven by the pursuit of real-world impact, I am here to build meaningful connections, learn from seasoned professionals, and bring fresh perspectives to the field. If you're passionate about justice and innovation, let's connect.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="py-24 md:py-32 bg-bg-main">
+            <div class="container mx-auto px-6 lg:px-8">
+                <div class="text-center mb-20" data-aos="fade-up">
+                    <h2 class="text-4xl md:text-5xl font-semibold mb-4 text-main">Internship Experience</h2>
+                    <p class="text-lg text-muted">Gaining practical insights across diverse legal fields.</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Internship Card -->
+                    <div class="bg-bg-secondary p-8 rounded-lg border border-gray-800 hover:border-accent/50 transition-colors duration-300" data-aos="fade-up">
+                        <h3 class="text-2xl font-semibold mb-2 text-main">Vidhi Associates</h3>
+                        <p class="text-sm text-muted mb-4">Patna | Jan 2025</p>
+                        <p class="text-text-muted">Gained foundational experience in a dynamic legal environment, assisting with case research and documentation.</p>
+                    </div>
+                    <!-- Internship Card -->
+                    <div class="bg-bg-secondary p-8 rounded-lg border border-gray-800 hover:border-accent/50 transition-colors duration-300" data-aos="fade-up" data-aos-delay="100">
+                        <h3 class="text-2xl font-semibold mb-2 text-main">CRY - Child Rights and You</h3>
+                        <p class="text-sm text-muted mb-4">Kolkata | Jul - Aug 2024</p>
+                        <p class="text-text-muted">Researched child rights, drafted articles on the POCSO Act, and contributed to the 'Poori Padhai Desh ki Bhalai' campaign.</p>
+                    </div>
+                    <!-- Internship Card -->
+                    <div class="bg-bg-secondary p-8 rounded-lg border border-gray-800 hover:border-accent/50 transition-colors duration-300" data-aos="fade-up" data-aos-delay="200">
+                        <h3 class="text-2xl font-semibold mb-2 text-main">Patna District Court</h3>
+                        <p class="text-sm text-muted mb-4">Patna | Jan - Feb 2024</p>
+                        <p class="text-text-muted">Interacted directly with clients to gather case details and assisted in legal research focusing on case-specific laws.</p>
+                    </div>
+                     <!-- Internship Card -->
+                    <div class="bg-bg-secondary p-8 rounded-lg border border-gray-800 hover:border-accent/50 transition-colors duration-300" data-aos="fade-up" data-aos-delay="300">
+                        <h3 class="text-2xl font-semibold mb-2 text-main">Patna High Court</h3>
+                        <p class="text-sm text-muted mb-4">Patna | Nov - Dec 2023</p>
+                        <p class="text-text-muted">Assisted in drafting legal documents, including pleadings and briefs, and contributed to contract reviews.</p>
+                    </div>
+                    <!-- Internship Card -->
+                    <div class="bg-bg-secondary p-8 rounded-lg border border-gray-800 hover:border-accent/50 transition-colors duration-300" data-aos="fade-up" data-aos-delay="400">
+                        <h3 class="text-2xl font-semibold mb-2 text-main">Lex Root Pvt Ltd</h3>
+                        <p class="text-sm text-muted mb-4">Noida | Apr - Jun 2023</p>
+                        <p class="text-text-muted">Conducted in-depth research on legal implications of AI, contributing to the framework of the 'Lawyer AI' product.</p>
+                    </div>
+                    <!-- Internship Card -->
+                    <div class="bg-bg-secondary p-8 rounded-lg border border-gray-800 hover:border-accent/50 transition-colors duration-300" data-aos="fade-up" data-aos-delay="500">
+                        <h3 class="text-2xl font-semibold mb-2 text-main">International Period Society</h3>
+                        <p class="text-sm text-muted mb-4">Patna | Jul 2022 - Mar 2023</p>
+                        <p class="text-text-muted">Spearheaded education campaigns to combat menstrual taboo and improve reproductive health in underserved communities.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="skills" class="py-24 md:py-32 bg-bg-secondary">
+             <div class="container mx-auto px-6 lg:px-8">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-4xl md:text-5xl font-semibold mb-4 text-main">Skills & Education</h2>
+                </div>
+                <div class="grid lg:grid-cols-2 gap-16 items-start">
+                    <div data-aos="fade-right">
+                        <h3 class="text-3xl font-semibold text-center mb-8 text-main">Core Competencies</h3>
+                         <p class="text-center text-text-muted mb-8 -mt-4 max-w-md mx-auto">A blend of legal acumen and a passion for social advocacy, equipped for the modern legal landscape.</p>
+                        <div class="flex flex-wrap justify-center gap-4">
+                            <span class="bg-accent/10 text-accent text-md font-semibold px-5 py-2 rounded-full">Intellectual Property</span>
+                            <span class="bg-accent/10 text-accent text-md font-semibold px-5 py-2 rounded-full">Legal Research</span>
+                            <span class="bg-accent/10 text-accent text-md font-semibold px-5 py-2 rounded-full">Survey Research</span>
+                            <span class="bg-accent/10 text-accent text-md font-semibold px-5 py-2 rounded-full">Social Work</span>
+                            <span class="bg-accent/10 text-accent text-md font-semibold px-5 py-2 rounded-full">Advocacy</span>
+                        </div>
+                    </div>
+                    <div data-aos="fade-left">
+                        <h3 class="text-3xl font-semibold text-center mb-8 text-main">Education</h3>
+                         <p class="text-center text-text-muted mb-8 -mt-4 max-w-md mx-auto">Building a strong legal foundation at a premier institution.</p>
+                        <div class="space-y-6 text-center">
+                           <div class="border border-gray-800 p-6 rounded-lg">
+                                <p class="text-xl font-semibold text-main">BBA LLB, Law (2023 - 2028)</p>
+                                <p class="text-muted">KIIT - Kalinga Institute of Industrial Technology</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Career Corner -->
+        <section id="career-corner" class="py-24 md:py-32 bg-bg-main">
+            <div class="container mx-auto px-6 lg:px-8">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-4xl md:text-5xl font-semibold mb-4 text-main">AI Career Corner</h2>
+                    <p class="text-lg text-muted max-w-3xl mx-auto">Ask for career advice and get an AI-powered perspective, guided by Ritika's journey and interests in law.</p>
+                </div>
+
+                <div class="max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+                    <div class="bg-bg-secondary p-8 rounded-lg border border-gray-800 relative">
+                         <div id="ai-loader-container" class="hidden">
+                            <div class="ai-loader rounded-lg">
+                                <div class="loader-circle"></div>
+                            </div>
+                        </div>
+                        <textarea id="ai-prompt" class="w-full h-32 p-4 bg-bg-main rounded-md border-2 border-gray-700 focus:border-accent focus:ring-0 transition-all text-lg text-text-main" placeholder="e.g., How can I combine my interest in social work with a law career?"></textarea>
+                        <div class="text-center mt-6">
+                            <button id="ask-ai-button" class="btn-primary">Get Career Advice</button>
+                        </div>
+                    </div>
+
+                    <div id="ai-result-container" class="mt-8 hidden">
+                         <div class="bg-bg-secondary p-8 rounded-lg border border-gray-800">
+                            <h3 class="text-3xl font-semibold mb-4 text-accent">AI Mentor's Response</h3>
+                            <div id="ai-result" class="text-text-muted space-y-4 leading-relaxed"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="achievements" class="py-24 md:py-32 bg-bg-secondary">
+             <div class="container mx-auto px-6 lg:px-8">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-4xl md:text-5xl font-semibold mb-4 text-main">Honors & Awards</h2>
+                    <p class="text-lg text-muted">Recognitions that mark key milestones in my journey.</p>
+                </div>
+                <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 text-center text-muted">
+                    <div data-aos="fade-up">
+                        <div class="w-20 h-20 mx-auto bg-accent/10 rounded-full flex items-center justify-center mb-3 transition-transform hover:scale-110"><i data-feather="edit-3" class="w-8 h-8 text-accent"></i></div>
+                        <p class="text-main font-semibold">State Level Essay Winner</p>
+                        <p class="text-sm">Recognized for compelling legal writing</p>
+                    </div>
+                    <div data-aos="fade-up" data-aos-delay="50">
+                        <div class="w-20 h-20 mx-auto bg-accent/10 rounded-full flex items-center justify-center mb-3 transition-transform hover:scale-110"><i data-feather="award" class="w-8 h-8 text-accent"></i></div>
+                        <p class="text-main font-semibold">Karate Championship</p>
+                        <p class="text-sm">Silver Medalist in martial arts</p>
+                    </div>
+                    <div data-aos="fade-up" data-aos-delay="100">
+                        <div class="w-20 h-20 mx-auto bg-accent/10 rounded-full flex items-center justify-center mb-3 transition-transform hover:scale-110"><i data-feather="mic" class="w-8 h-8 text-accent"></i></div>
+                        <p class="text-main font-semibold">Best Speaker</p>
+                        <p class="text-sm">Awarded at Youth Parliament</p>
+                    </div>
+                    <div data-aos="fade-up" data-aos-delay="150">
+                        <div class="w-20 h-20 mx-auto bg-accent/10 rounded-full flex items-center justify-center mb-3 transition-transform hover:scale-110"><i data-feather="star" class="w-8 h-8 text-accent"></i></div>
+                        <p class="text-main font-semibold">Artist of the Decade</p>
+                        <p class="text-sm">Recognized for creative excellence</p>
+                    </div>
+                    <div data-aos="fade-up" data-aos-delay="200">
+                        <div class="w-20 h-20 mx-auto bg-accent/10 rounded-full flex items-center justify-center mb-3 transition-transform hover:scale-110"><i data-feather="bar-chart-2" class="w-8 h-8 text-accent"></i></div>
+                        <p class="text-main font-semibold">Classical Dance</p>
+                        <p class="text-sm">1st Runner Up in competition</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-24 md:py-32 bg-bg-main">
+            <div class="container mx-auto px-6 lg:px-8 text-center">
+                <div data-aos="fade-up">
+                    <h2 class="text-4xl md:text-5xl font-semibold mb-6 text-main">Get In Touch</h2>
+                    <p class="text-lg text-muted mb-8 max-w-2xl mx-auto">
+                        Open to collaborations, internships, and conversations about the future of law.
+                    </p>
+                    
+                    <!-- Email Card -->
+                    <div class="max-w-md mx-auto bg-bg-secondary rounded-xl shadow-lg overflow-hidden mb-8 hover:shadow-xl transition-shadow duration-300 border border-accent/20" data-aos="fade-up" data-aos-delay="100">
+                        <div class="p-6">
+                            <div class="flex flex-col items-center">
+                                <div class="p-3 bg-accent/10 rounded-full mb-4">
+                                    <i data-feather="mail" class="w-8 h-8 text-accent"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold mb-2">Email Me</h3>
+                                <div class="flex items-center space-x-2 mb-4">
+                                    <a href="mailto:ritika.juris@gmail.com" id="email-text" class="text-lg text-muted hover:text-accent transition-colors">ritika.juris@gmail.com</a>
+                                    <button id="copy-btn" class="text-accent hover:text-accent-hover transition-colors ml-1" title="Copy to clipboard" onclick="event.stopPropagation()">
+                                        <i data-feather="copy" class="w-4 h-4"></i>
+                                    </button>
+                                </div>
+                                <p class="text-sm text-muted mb-4">I'll get back to you as soon as possible</p>
+                                <a href="mailto:ritika.juris@gmail.com" class="btn-primary w-full sm:w-auto">Send Email</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row justify-center items-center gap-6 mt-8">
+                        <a href="https://www.linkedin.com/in/ritikarajlegal" target="_blank" rel="noopener noreferrer" class="btn-secondary w-full sm:w-auto flex items-center justify-center gap-2">
+                            <i data-feather="linkedin" class="w-5 h-5"></i> LinkedIn
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-bg-secondary text-muted py-8">
+        <div class="container mx-auto px-6 lg:px-8 text-center">
+            <p>&copy; 2024 Ritika Raj. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true, offset: 50 });
+        feather.replace();
+        
+        // Email copy functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const copyBtn = document.getElementById('copy-btn');
+            const emailText = document.getElementById('email-text');
+            const email = 'ritika.juris@gmail.com';
+            
+            if (copyBtn) {
+                copyBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    navigator.clipboard.writeText(email).then(() => {
+                        // Change icon to checkmark
+                        const icon = copyBtn.querySelector('i');
+                        const originalIcon = icon.getAttribute('data-feather');
+                        
+                        // Change to check icon
+                        icon.setAttribute('data-feather', 'check');
+                        feather.replace();
+                        
+                        // Revert back to copy icon after 2 seconds
+                        setTimeout(() => {
+                            icon.setAttribute('data-feather', originalIcon);
+                            feather.replace();
+                        }, 2000);
+                        
+                        // Visual feedback
+                        emailText.classList.add('text-accent');
+                    }).catch(err => {
+                        console.error('Failed to copy email: ', err);
+                    });
+                });
+            }
+        });
+
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const loader = document.getElementById('loader');
+                if(loader) {
+                    loader.style.opacity = '0';
+                    loader.style.visibility = 'hidden';
+                }
+            }, 500);
+        });
+        
+        const menuButton = document.getElementById('menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if(menuButton && mobileMenu) {
+            menuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+            });
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const target = document.querySelector(targetId);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Gemini API Career Corner Logic
+        const askAiButton = document.getElementById('ask-ai-button');
+        const aiPrompt = document.getElementById('ai-prompt');
+        const aiResultContainer = document.getElementById('ai-result-container');
+        const aiResult = document.getElementById('ai-result');
+        const aiLoader = document.getElementById('ai-loader-container');
+
+        if(askAiButton) {
+            askAiButton.addEventListener('click', async () => {
+                const promptText = aiPrompt.value;
+                if (!promptText) {
+                    aiResult.innerHTML = '<p class="text-accent">Please ask a question about your legal career path.</p>';
+                    aiResultContainer.classList.remove('hidden');
+                    return;
+                }
+
+                aiLoader.classList.remove('hidden');
+                askAiButton.disabled = true;
+
+                const fullPrompt = `You are an encouraging and insightful career mentor for aspiring law professionals. Your name is Ritika's AI Mentor. Your persona is inspired by Ritika Raj, a law student passionate about social work, child rights (POCSO Act), and legal tech. Given the user's question, provide supportive and actionable career advice. Frame your response in a friendly, conversational tone. User's question: "${promptText}"`;
+                
+                try {
+                    let chatHistory = [{ role: "user", parts: [{ text: fullPrompt }] }];
+                    const payload = { contents: chatHistory };
+                    const apiKey = ""; // API key is handled by the environment
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+                    
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    
+                    const result = await response.json();
+                    
+                    if (result.candidates && result.candidates[0] && result.candidates[0].content && result.candidates[0].content.parts) {
+                        let text = result.candidates[0].content.parts[0].text;
+                        text = text.replace(/\\n/g, '<br>').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\*(.*?)\*/g, '<em>$1</em>');
+                        aiResult.innerHTML = text;
+                    } else {
+                         aiResult.innerHTML = '<p class="text-accent">Sorry, the AI mentor is unavailable right now. The response was empty or malformed.</p>';
+                         console.error("API Response Error:", result);
+                    }
+                } catch (error) {
+                    console.error('Error fetching from Gemini API:', error);
+                    aiResult.innerHTML = '<p class="text-accent">An error occurred while communicating with the AI Mentor. Please try again later.</p>';
+                } finally {
+                    aiLoader.classList.add('hidden');
+                    askAiButton.disabled = false;
+                    aiResultContainer.classList.remove('hidden');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
